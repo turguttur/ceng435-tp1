@@ -2,7 +2,6 @@ import socket
 import sys
 import time
 
-sys.stdout.flush()
 # s: - Interface 0: "10.10.1.1"
 # b  - Interface 1: "10.10.1.2"
 # b  - Interface 2: "10.10.2.1"
@@ -47,12 +46,12 @@ def Main():
 	s.bind((host, port))
 	s.listen(1)
 	c, addr = s.accept()
-	print "Connection from: " + str(addr)
+	print("Connection from: " + str(addr), flush = True)
 	while True:
 		data = c.recv(1024)
 		if not data:
 			break
-		print "from connected user: " + str(data)
+		print("from connected user: " + str(data), flush = True)
 	s.close()
 
 if __name__ == "__main__":

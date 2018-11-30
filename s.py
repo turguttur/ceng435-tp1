@@ -44,7 +44,7 @@ def Main():
 	s.connect((host, port))
 	for msg in range(100, 200):
 		s.send(str(msg))
-		print "PACKET->" + str(msg) + " sent"
+		print("PACKET->" + str(msg) + " sent", flush = True)
 	s.close()
 
 if __name__ == "__main__":
