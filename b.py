@@ -2,6 +2,7 @@ import socket
 import sys
 import time
 
+sys.stdout.flush()
 # s: - Interface 0: "10.10.1.1"
 # b  - Interface 1: "10.10.1.2"
 # b  - Interface 2: "10.10.2.1"
