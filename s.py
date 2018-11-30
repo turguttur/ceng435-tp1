@@ -43,7 +43,7 @@ def Main():
 	s = socket.socket()
 	s.connect((host, port))
 	for msg in range(100, 200):
-		s.send(str(msg))
+		s.send(str(msg).decode())
 		print("PACKET->" + str(msg) + " sent", flush = True)
 	s.close()
 
