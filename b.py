@@ -35,18 +35,24 @@ ips = ["10.10.1.1",
 	   "10.10.5.1",
 	   "10.10.5.2"]
 
+# Listen TCP connection from s with Interface 1
+# 
+
 def Main():
-	# s with Interface 0 to b with Interface 1
-	host = ips[1]	# b's Interface 1 ip address
-	port = 9000		# The port used by b's Interface 1
+	host = ips[1]	# Listen TCP connection from s with this inteface
+	port = 9000 	# Listen TCP connection from s with this port
 
 	s = socket.socket()
-	s.connect((host, port))
-	for msg in range(100, 200):
-		s.send(str(msg))
-		print "PACKET->" + str(msg) + " sent"
+	s.bind((host, port))
+	s.listen(1)
+	c, addr = s.accept()
+	print "Connection from: " + str(addr)
+	while True:
+		data = c.recv(1024)
+		if not data:
+			break
+		print "from connected user: " + str(data)
 	s.close()
 
 if __name__ == "__main__":
 	Main()
-
