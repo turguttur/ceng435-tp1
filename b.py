@@ -48,10 +48,13 @@ def Main():
 	c, addr = s.accept()
 	print("Connection from: " + str(addr), flush = True)
 	while True:
-		data = c.recv(1024)
-		if not data:
-			break
-		print("from connected user: " + str(data), flush = True)
+		try:
+			data = c.recv(1024)
+			if not data:
+				break
+			print("from connected user: " + str(data), flush = True)
+		except:
+			continue
 	s.close()
 
 if __name__ == "__main__":
