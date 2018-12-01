@@ -25,7 +25,7 @@ def TCP2UDP(message):
 	return data
 '''
 def TCP2UDP(message, pathFlag):
-	if pathFlag == 'r1':
+	if pathFlag == 'r2':
 		host = "10.10.4.2"		# R2 (interface-7) link-4 endpoint#1
  		port = 8000				# R2 interface-7 port
  		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
