@@ -43,9 +43,9 @@ def Main():
 	s = socket.socket()
 	s.connect((host, port))
 	for msg in range(100, 200):
-		s.send(str(msg).encode())
+		s.send((str(msg) + "\n").encode())
 		print("PACKET->" + str(msg) + " sent", flush = True)
-		time.sleep(0.1)
+		#time.sleep(0.1)
 	s.close()
 
 if __name__ == "__main__":
