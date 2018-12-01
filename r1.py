@@ -50,3 +50,6 @@ def Main():
 			break
 		print(data)
 	s.close()
+
+if __name__ == '__main__':
+	Main()
