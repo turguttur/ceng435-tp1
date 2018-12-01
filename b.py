@@ -58,7 +58,7 @@ def Main():
 		message = c.recv(1024)
 		if not message:
 			break
-		data, pathFlag = TCP2UDP(message)
+		data, pathFlag = TCP2UDP(message, pathFlag)
 		print "Received: " + data
 		ack = "ACK" + '{0:04}'.format(i)
 		c.send(ack)
