@@ -23,7 +23,7 @@ def TCP2UDP(message):
 	data, addr = s.recvfrom(1024)
 	s.close()
 	return data
-
+'''
 def TCP2UDP(message, pathFlag):
 	if pathFlag == 'r1':
 		host = "10.10.2.2" 		# R1 (inteface-3) link-1 endpoint#1
@@ -45,6 +45,7 @@ def TCP2UDP(message, pathFlag):
  		data, addr = s.recvfrom(1024)
  		s.close()
  		return data, 'r1'
+'''
 
 def Main():
 	host = "10.10.1.2"
