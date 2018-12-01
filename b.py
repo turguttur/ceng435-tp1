@@ -53,7 +53,6 @@ def Main():
 			if not data:
 				break
 			print("from connected user: " + str(data), flush = True)
-			sleep(0.1)
 		except:
 			continue
 	s.close()

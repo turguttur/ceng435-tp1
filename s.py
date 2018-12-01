@@ -45,7 +45,7 @@ def Main():
 	for msg in range(100, 200):
 		s.send(str(msg).encode())
 		print("PACKET->" + str(msg) + " sent", flush = True)
-		sleep(0.1)
+		time.sleep(0.1)
 	s.close()
 
 if __name__ == "__main__":
