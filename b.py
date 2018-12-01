@@ -13,6 +13,17 @@ import time
 # d  (interface-5): "10.10.3.2"
 # d  (interface-9): "10.10.5.2"
 
+def TCP2UDP(message):
+	host = "10.10.2.2" 		# R1 (inteface-3) link-1 endpoint#1
+	port = 8000
+	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	s.bind(("10.10.2.1", 8001))
+	message += "->r1"
+	s.sendto(message, (host, port))
+	data, addr = s.recvfrom(1024)
+	s.close()
+	return data
+
 def Main():
 	host = "10.10.1.2"
 	port = 8000
@@ -21,9 +32,10 @@ def Main():
 	s.listen(1)
 	c, addr = s.accept()
 	for i in range(0, 100):
-		data = c.recv(1024)
-		if not data:
+		message = c.recv(1024)
+		if not message:
 			break
+		data = TCP2UDP(message)
 		print "Received: " + data
 		ack = "ACK" + '{0:04}'.format(i)
 		c.send(ack)
