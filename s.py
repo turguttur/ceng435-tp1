@@ -14,15 +14,14 @@ import time
 # d  (interface-9): "10.10.5.2"
 
 def Main():
-	host = "10.10.4.1" 		# B (inteface-6)
-	port = 8000
+	host = "10.10.1.2" 		# B (inteface-1) link0 endpoint#1
+	port = 8000				#  
 
 	s = socket.socket()
 	s.connect((host, port))
-
 	for i in range(0,100):
 		packetID = '{0:04}'.format(i)
-		message = "(PACKET:" + packetID ")" + "->s"
+		message = "(PACKET:" + packetID + ")" + "->s"
 		s.send(message.encode())
 		print message
 		ack = s.recv(1024)
