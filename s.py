@@ -28,7 +28,7 @@ def Main():
 		ack = s.recv(1024)
 		end = time.time()
 		rtt = end - start
-		print "RECEIVED: " + ack + " with RTT: " + rtt 
+		print "RECEIVED: " + ack + " with RTT: " + str(rtt) 
 	s.close()
 
 if __name__ == "__main__":
