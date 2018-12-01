@@ -23,7 +23,7 @@ def Main():
 	for i in range(0, 100):
 		data, addr = s.recvfrom(1024)
 		print data
-		s.sendto("ACK", ("10.10.2.1", 8001))
+		s.sendto("ACK->r1", ("10.10.2.1", 8001))
 	s.close()
 
 if __name__ == '__main__':
