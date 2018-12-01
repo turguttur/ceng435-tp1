@@ -14,11 +14,11 @@ import time
 # d  (interface-9): "10.10.5.2"
 
 def TCP2UDP(message):
-	host = "10.10.4.2"		# R2 (interface-7) link-4 endpoint#1
-	port = 8000				# R2 interface-7 port
+	host = "10.10.2.2" 		# R1 (inteface-3) link-1 endpoint#1
+	port = 8000
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-	s.bind(("10.10.4.1", 8002))
-	message += "->r2"
+	s.bind(("10.10.2.1", 8001))
+	message += "->r1"
 	s.sendto(message, (host, port))
 	data, addr = s.recvfrom(1024)
 	s.close()
