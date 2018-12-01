@@ -23,7 +23,7 @@ def TCP2UDP(message, pathFlag):
 		s.sendto(message, (host, port))
 		data, addr = s.recvfrom(1024)
 		s.close()
-		return data, pathFlag = 'r2'
+		return data, 'r2'
 	else:
 		host = "10.10.4.2"		# R2 (interface-7) link-4 endpoint#1
  		port = 8000				# R2 interface-7 port
@@ -33,7 +33,7 @@ def TCP2UDP(message, pathFlag):
  		s.sendto(message, (host, port))
  		data, addr = s.recvfrom(1024)
  		s.close()
- 		return data, pathFlag = 'r1'
+ 		return data, 'r1'
 
 def Main():
 	host = "10.10.1.2"
