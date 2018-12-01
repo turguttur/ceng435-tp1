@@ -20,8 +20,10 @@ def Main():
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	s.bind((host, port))
 
-	for i in range(0, 100):
+	while True:
 		data, addr = s.recvfrom(1024)
+		if not data:
+			break
 		print data
 		s.sendto("ACK->r1", ("10.10.2.1", 8001))
 	s.close()
