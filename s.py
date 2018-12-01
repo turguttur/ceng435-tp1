@@ -22,10 +22,13 @@ def Main():
 	for i in range(0,100):
 		packetID = '{0:04}'.format(i)
 		message = "(PACKET:" + packetID + ")" + "->s"
+		start = time.time()
 		s.send(message.encode())
-		print message
+		print "SENT: " + message
 		ack = s.recv(1024)
-		print ack
+		end = time.time()
+		rtt = end - start
+		print "RECEIVED: " + ack + " with RTT: " + rtt 
 	s.close()
 
 if __name__ == "__main__":
