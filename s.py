@@ -38,7 +38,7 @@ ips = ["10.10.1.1",
 def Main():
 	# s with Interface 0 to b with Interface 1
 	host = ips[1]	# b's Interface 1 ip address
-	port = 9000		# The port used by b's Interface 1
+	port = 5000		# The port used by b's Interface 1
 
 	s = socket.socket()
 	s.connect((host, port))

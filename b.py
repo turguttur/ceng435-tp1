@@ -36,27 +36,42 @@ ips = ["10.10.1.1",
 	   "10.10.5.2"]
 
 # Listen TCP connection from s with Interface 1
-# 
-#
 
-def Main():
-	host = ips[1]	# Listen TCP connection from s with this inteface
-	port = 9000 	# Listen TCP connection from s with this port
+sockets = []
+def InitializeConnections():
+	host_s = ips[1]		# s ip
+	port_s = 5000		
+	sock_s = socket.socket()
+	sock_s.bind((host_s, sock_s))
+	sockets.append(sock_s)
 
-	s = socket.socket()
-	s.bind((host, port))
-	s.listen(1)
-	c, addr = s.accept()
-	print("Connection from: " + str(addr), flush = True)
+	hostb_i2 = ips[2]
+	portb_i2 = 8000
+	r1 = (ips[3], 8001)
+	sock_r1 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	sock_r1.bind((hostb_i2, portb_i2))
+	sockets.append(sock_r1)	
+	
+
+def TCPconnection():
+	sockets[0].listen(1)
+	c, addr = sockets[0].accept()
+	print("Connection from: " + str(addr)) 
 	while True:
 		try:
 			data = c.recv(1024)
+			sockets[1].sendto(data, (ips[3], 8001))
 			if not data:
 				break
-			print("from connected user: " + str(data), flush = True)
+			print("From connected user: " + str(data))
 		except:
 			continue
-	s.close()
+	sockets[0].close()
+	sockets[1].close()
+
+def Main():
+	InitializeConnections()
+	TCPconnection()
 
 if __name__ == "__main__":
 	Main()
