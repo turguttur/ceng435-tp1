@@ -26,16 +26,6 @@ def TCP2UDP(message):
 '''
 def TCP2UDP(message, pathFlag):
 	if pathFlag == 'r1':
-		host = "10.10.2.2" 		# R1 (inteface-3) link-1 endpoint#1
-		port = 8000
-		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-		s.bind(("10.10.2.1", 8001))
-		message += "->r1"
-		s.sendto(message, (host, port))
-		data, addr = s.recvfrom(1024)
-		s.close()
-		return data, 'r2'
-	else:
 		host = "10.10.4.2"		# R2 (interface-7) link-4 endpoint#1
  		port = 8000				# R2 interface-7 port
  		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -45,6 +35,16 @@ def TCP2UDP(message, pathFlag):
  		data, addr = s.recvfrom(1024)
  		s.close()
  		return data, 'r1'
+	else:	
+		host = "10.10.2.2" 		# R1 (inteface-3) link-1 endpoint#1
+		port = 8000
+		s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+		s.bind(("10.10.2.1", 8001))
+		message += "->r1"
+		s.sendto(message, (host, port))
+		data, addr = s.recvfrom(1024)
+		s.close()
+		return data, 'r2'
 
 def Main():
 	host = "10.10.1.2"
