@@ -25,6 +25,7 @@ def ListenR2():
 	 	data, addr = s.recvfrom(1024)
 	 	if not data:
 	 		break
+	 	print data
 	 	ACK = "ACK"
 	 	s.sendto(ACK, ("10.10.5.1", 8001))
 	s.close()
