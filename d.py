@@ -12,8 +12,8 @@ def ListenR1():
 		if not data:
 			break
 		print data
-		t = time.time()
-		ACK = "ACK(" + str(t) + "):" + data[:13]
+		t = int(time.time() * 1000)
+	 	ACK = "ACK(" + str(t) + "):" + data[:13]
 		s.sendto(ACK, ("10.10.3.1", 8001))
 	s.close()
 
