@@ -21,8 +21,8 @@ def Main():
 	s.connect((host, port))
 	for i in range(0,1000):
 		packetID = '{0:04}'.format(i)
-		message = "(PACKET:" + packetID + ")" + "->s"
 		start = time.time()
+		message = "(PACKET:" + packetID + "):(" + str(int(start * 1000)) + ")" + "->s"
 		s.send(message.encode())
 		print "SENT: " + message
 		ACK = s.recv(1024)
