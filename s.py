@@ -29,7 +29,7 @@ def Main():
 		end = time.time()
 		rtt = end - start
 		print ACK[4:17]
-		e2e = int(start * 1000) - int(ACK[4:17])
+		e2e = int(ACK[4:17]) - int(start * 1000)
 		print "RECEIVED: " + ACK + " with RTT: " + str(rtt) + " & " + "with E2E: " + str(e2e) 
 	s.close()
 
