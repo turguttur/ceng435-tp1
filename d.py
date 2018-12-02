@@ -12,7 +12,8 @@ def ListenR1():
 		if not data:
 			break
 		print data
-		ACK = "ACK " + data[:13]
+		t = time.time()
+		ACK = "ACK(" + str(t) + "):" + data[:13]
 		s.sendto(ACK, ("10.10.3.1", 8001))
 	s.close()
 
@@ -26,15 +27,16 @@ def ListenR2():
 	 	if not data:
 	 		break
 	 	print data
-	 	ACK = "ACK " + data[:13]
+	 	t = time.time()
+	 	ACK = "ACK(" + str(t) + "):" + data[:13]
 	 	s.sendto(ACK, ("10.10.5.1", 8001))
 	s.close()
 
 def Main():
-	th = threading.Thread(target = ListenR1, args=())
-	th2 = threading.Thread(target = ListenR2, args=())
-	th.start()
-	th2.start()
+	thread1 = threading.Thread(target = ListenR1, args=())
+	thread2 = threading.Thread(target = ListenR2, args=())
+	thread1.start()
+	thread2.start()
 
 if __name__ == '__main__':
 	Main()
