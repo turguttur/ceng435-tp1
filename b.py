@@ -64,9 +64,10 @@ def Main():
 		message = c.recv(1024)
 		if not message:
 			break
+		print "RECEIVED MESSAGE: " + message
 		pathFlag = randint(1, 2)
 		data = TCP2UDP(message, pathFlag, routerDict)
-		print "Received: " + data
+		print "RECEIVED ACK : " + data
 		ack = "ACK" + '{0:04}'.format(i)
 		c.send(ack)
 

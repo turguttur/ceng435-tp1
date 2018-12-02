@@ -18,6 +18,7 @@ def Route(message):
 	port = 8000
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	s.bind(("10.10.5.1", 8001))
+	message += "->r2"
 	s.sendto(message, (host, port))
 	data, addr = s.recvfrom(1024)
 	s.close()
@@ -35,6 +36,7 @@ def Main():
 			break
 		print data
 		ACK = Route(data)
+		ACK += "->r2"
 		s.sendto(ACK, ("10.10.4.1", 8002))
 	s.close()		
 
