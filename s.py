@@ -28,7 +28,7 @@ def Main():
 		ACK = s.recv(1024)
 		end = time.time()
 		rtt = end - start
-		e2e = start - float(ACK[4:17])
+		e2e = int(start) - int(ACK[4:17])
 		print "RECEIVED: " + ACK + " with RTT: " + str(rtt) + " & " + "with E2E: " + str(e2e) 
 	s.close()
 
