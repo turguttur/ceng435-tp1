@@ -1,6 +1,7 @@
 import socket
 import time
 import threading
+import os
 
 e2e_delay = []
 def ListenR1():
@@ -48,6 +49,9 @@ def ListenR2():
 	s.close()
 
 def Main():
+	os.system("sudo service ntp stop")
+	os.system("sudo ntpdate -s time.nist.gov")
+	os.system("sudo service ntp start")
 	thread1 = threading.Thread(target = ListenR1, args=())
 	thread2 = threading.Thread(target = ListenR2, args=())
 	thread1.start()
