@@ -14,6 +14,7 @@ def ListenR1():
 		t = int(time.time() * 1000)
 		e2e = t - int(data[15:28])
 		print data + " with E2E: " + str(e2e)
+		print "END TIME: ", str(t)
 	 	ACK = "ACK(" + str(t) + "):" + data[:13]
 		s.sendto(ACK, ("10.10.3.1", 8001))
 	s.close()
@@ -30,6 +31,7 @@ def ListenR2():
 	 	t = int(time.time() * 1000)
 	 	e2e = t - int(data[15:28])
 		print data + " with E2E: " + str(e2e)
+		print "END TIME: ", str(t)
 	 	ACK = "ACK(" + str(t) + "):" + data[:13]
 	 	s.sendto(ACK, ("10.10.5.1", 8001))
 	s.close()

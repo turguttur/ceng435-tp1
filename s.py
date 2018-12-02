@@ -23,12 +23,12 @@ def Main():
 		packetID = '{0:04}'.format(i)
 		start = time.time()
 		message = "(PACKET:" + packetID + "):(" + str(int(start * 1000)) + ")" + "->s"
+		print "START TIME: ", str(start)
 		s.send(message.encode())
 		print "SENT: " + message
 		ACK = s.recv(1024)
 		end = time.time()
 		rtt = end - start
-		print ACK[4:17]
 		e2e = int(ACK[4:17]) - int(start * 1000)
 		print "RECEIVED: " + ACK + " with RTT: " + str(rtt) + " & " + "with E2E: " + str(e2e) 
 	s.close()
