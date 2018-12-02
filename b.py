@@ -60,7 +60,7 @@ def Main():
 		2: [("10.10.4.2", 8000), ("10.10.4.1", 8002)]
 	}
 
-	for i in range(0, 1000):
+	for i in range(0, 2500):
 		message = c.recv(1024)
 		if not message:
 			break

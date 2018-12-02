@@ -21,7 +21,7 @@ def ListenR1():
 		print data + " with E2E: " + str(e2e)
 	 	ACK = "ACK(" + str(int(rectime * 1000)) + "):" + data[:13]
 		s.sendto(ACK, ("10.10.3.1", 8001))
-		if data[8:12] == "0999":
+		if data[8:12] == "2499":
 	 		with open("e2e.csv", "wb") as csvfile:
 	 			patcher = csv.writer(csvfile, dialect='excel')
 	 			patcher.writerow(e2e_delay)
@@ -43,7 +43,7 @@ def ListenR2():
 		print data + " with E2E: " + str(e2e)
 	 	ACK = "ACK(" + str(int(rectime * 1000)) + "):" + data[:13]
 	 	s.sendto(ACK, ("10.10.5.1", 8001))
-	 	if data[8:12] == "0999":
+	 	if data[8:12] == "2499":
 	 		with open("e2e.csv", "wb") as csvfile:
 	 			patcher = csv.writer(csvfile, dialect='excel')
 	 			patcher.writerow(e2e_delay)
