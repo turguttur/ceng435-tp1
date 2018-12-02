@@ -25,10 +25,11 @@ def Main():
 		start = time.time()
 		s.send(message.encode())
 		print "SENT: " + message
-		ack = s.recv(1024)
+		ACK = s.recv(1024)
 		end = time.time()
 		rtt = end - start
-		print "RECEIVED: " + ack + " with RTT: " + str(rtt) 
+		e2e = start - float(ACK[5:18])
+		print "RECEIVED: " + ACK + " with RTT: " + str(rtt) + " & " + "with E2E: " + str(e2e) 
 	s.close()
 
 if __name__ == "__main__":
