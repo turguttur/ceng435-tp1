@@ -27,9 +27,9 @@ def ListenR2():
 	 	data, addr = s.recvfrom(1024)
 	 	if not data:
 	 		break
+	 	t = int(time.time() * 1000)
 	 	e2e = t - int(data[14:27])
 		print data + " with E2E: " + str(e2e)
-	 	t = int(time.time() * 1000)
 	 	ACK = "ACK(" + str(t) + "):" + data[:13]
 	 	s.sendto(ACK, ("10.10.5.1", 8001))
 	s.close()
