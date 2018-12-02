@@ -11,11 +11,12 @@ def ListenR1():
 		data, addr = s.recvfrom(1024)
 		if not data:
 			break
-		t = int(time.time() * 1000)
-		e2e = t - int(data[15:28])
+		rectime = time.time()
+		#t = int(time.time() * 1000)
+		e2e = int(rectime * 1000) - int(data[15:28])
 		print data + " with E2E: " + str(e2e)
-		print "END TIME: ", str(t)
-	 	ACK = "ACK(" + str(t) + "):" + data[:13]
+		print "END TIME: ", str(rectime)
+	 	ACK = "ACK(" + str(int(rectime * 1000)) + "):" + data[:13]
 		s.sendto(ACK, ("10.10.3.1", 8001))
 	s.close()
 
@@ -28,11 +29,12 @@ def ListenR2():
 	 	data, addr = s.recvfrom(1024)
 	 	if not data:
 	 		break
-	 	t = int(time.time() * 1000)
-	 	e2e = t - int(data[15:28])
+	 	rectime = time.time()
+		#t = int(time.time() * 1000)
+		e2e = int(rectime * 1000) - int(data[15:28])
 		print data + " with E2E: " + str(e2e)
-		print "END TIME: ", str(t)
-	 	ACK = "ACK(" + str(t) + "):" + data[:13]
+		print "END TIME: ", str(rectime)
+	 	ACK = "ACK(" + str(int(rectime * 1000)) + "):" + data[:13]
 	 	s.sendto(ACK, ("10.10.5.1", 8001))
 	s.close()
 
