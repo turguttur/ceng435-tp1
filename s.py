@@ -23,7 +23,6 @@ def Main():
 		packetID = '{0:04}'.format(i)
 		start = time.time()
 		message = "(PACKET:" + packetID + "):(" + str(int(start * 1000)) + ")" + "->s"
-		print "START TIME: ", str(start)
 		s.send(message.encode())
 		print "SENT: " + message
 		ACK = s.recv(1024)
