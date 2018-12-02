@@ -19,7 +19,7 @@ def Main():
 
 	s = socket.socket()
 	s.connect((host, port))
-	for i in range(0,100):
+	for i in range(0,1000):
 		packetID = '{0:04}'.format(i)
 		message = "(PACKET:" + packetID + ")" + "->s"
 		start = time.time()
