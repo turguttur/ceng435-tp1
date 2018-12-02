@@ -15,10 +15,6 @@ import os
 # d  (interface-9): "10.10.5.2"
 
 def Main():
-	os.system("sudo service ntp stop")
-	os.system("sudo ntpdate -s time.nist.gov")
-	os.system("sudo service ntp start")
-
 	host = "10.10.1.2" 		# B (inteface-1) link0 endpoint#1
 	port = 8000				#  
 
