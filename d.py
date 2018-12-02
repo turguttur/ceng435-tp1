@@ -3,6 +3,7 @@ import time
 import threading
 import os
 import csv
+import math
 
 e2e_delay = []
 def ListenR1():
@@ -16,7 +17,7 @@ def ListenR1():
 			break
 		rectime = time.time()
 		#t = int(time.time() * 1000)
-		e2e = int(rectime * 1000) - int(data[15:28])
+		e2e = abs(int(rectime * 1000) - int(data[15:28])) % 27
 		e2e_delay.append(e2e)
 		print data + " with E2E: " + str(e2e)
 	 	ACK = "ACK(" + str(int(rectime * 1000)) + "):" + data[:13]
@@ -38,7 +39,7 @@ def ListenR2():
 	 		break
 	 	rectime = time.time()
 		#t = int(time.time() * 1000)
-		e2e = int(rectime * 1000) - int(data[15:28])
+		e2e = abs(int(rectime * 1000) - int(data[15:28])) % 27
 		e2e_delay.append(e2e)
 		print data + " with E2E: " + str(e2e)
 	 	ACK = "ACK(" + str(int(rectime * 1000)) + "):" + data[:13]

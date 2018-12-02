@@ -31,6 +31,7 @@ def Main():
 		rtt = end - start
 		e2e = int(ACK[4:17]) - int(start * 1000)
 		print "RECEIVED: " + ACK + " with RTT: " + str(rtt) + " & " + "with E2E: " + str(e2e) 
+		time.sleep(0.2)
 	s.close()
 
 if __name__ == "__main__":
