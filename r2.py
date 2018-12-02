@@ -13,6 +13,15 @@ import time
 # d  (interface-5): "10.10.3.2"
 # d  (interface-9): "10.10.5.2"
 
+def Route(message):
+	host = "10.10.5.2"
+	port = 8000
+	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	s.bind(("10.10.5.1", 8001))
+	s.sendto(message, (host, port))
+	data, addr = s.recvfrom(1024)
+	s.close()
+	return data
 
 def Main():
 	host = "10.10.4.2"
@@ -25,7 +34,8 @@ def Main():
 		if not data:
 			break
 		print data
-		s.sendto("ACK->r2", ("10.10.4.1", 8002))
+		ACK = Route(data)
+		s.sendto(ACK, ("10.10.4.1", 8002))
 	s.close()		
 
 if __name__ == '__main__':
