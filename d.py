@@ -12,7 +12,7 @@ def ListenR1():
 		if not data:
 			break
 		print data
-		ACK = "ACK" + data[:4]
+		ACK = "ACK" + data[:12]
 		s.sendto(ACK, ("10.10.3.1", 8001))
 	s.close()
 
@@ -26,7 +26,7 @@ def ListenR2():
 	 	if not data:
 	 		break
 	 	print data
-	 	ACK = "ACK" + data[:4]
+	 	ACK = "ACK " + data[:12]
 	 	s.sendto(ACK, ("10.10.5.1", 8001))
 	s.close()
 

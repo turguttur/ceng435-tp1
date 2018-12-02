@@ -67,9 +67,9 @@ def Main():
 		print "RECEIVED MESSAGE: " + message
 		pathFlag = randint(1, 2)
 		data = TCP2UDP(message, pathFlag, routerDict)
-		print "RECEIVED ACK : " + data
-		ack = "ACK" + '{0:04}'.format(i)
-		c.send(ack)
+		ACK = data + "->b"
+		#ack = "ACK" + '{0:04}'.format(i)
+		c.send(ACK)
 
 if __name__ == "__main__":
 	Main()
